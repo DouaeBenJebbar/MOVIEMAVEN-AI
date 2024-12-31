@@ -1,0 +1,94 @@
+.header {
+    width: 100%;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    font-size: 14px;
+    color: #e5e5e5;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
+    z-index: 1;
+  }
+  
+  .header_left {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .header_left img {
+    width: 90px;
+  }
+  
+  .header_left ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+  
+  .header_left ul li {
+    cursor: pointer;
+  }
+  
+  .header_right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative; /* Added to allow absolute positioning of dropdown */
+  }
+  
+  .header_right .icons {
+    width: 20px;
+  }
+  
+  .header_right .profile {
+    border-radius: 4px;
+    width: 35px;
+  }
+  
+  .header_profile {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    align-items: center;
+    position: relative; /* Ensures dropdown is positioned relative to this element */
+  }
+  
+  .sign_in_button {
+    padding: 7px 12px;
+    background-color: #e50914; /* Netflix red */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Poppins';
+  }
+  
+  .sign_in_button:hover {
+    background-color: #f40612; /* Slightly lighter red on hover */
+  }
+  
+  .header .dropdown {
+    position: absolute;
+    top: 100%; /* Aligns the dropdown directly below the profile section */
+    right: 0; /* Ensures alignment with the right edge of the profile */
+    width: max-content;
+    background: #191919;
+    padding: 10px 22px;
+    border-radius: 2px;
+    text-decoration: underline;
+    z-index: 1;
+    display: none;
+  }
+  
+  .header .dropdown p {
+    font-size: 13px;
+    cursor: pointer;
+  }
+  
+  .header_profile:hover .dropdown {
+    display: block;
+  }
+  
