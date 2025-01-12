@@ -1,63 +1,30 @@
-.hero{
-    position: relative;
+.MoviePage {
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #fff;
 }
 
-.banner-img{
-    width: 100%;
-    mask-image: linear-gradient(to right, transparent, black 75% );
-    -webkit-mask-image: linear-gradient(to right, transparent, black 75% );
+.MoviePage .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay for better text visibility */
+  z-index: 0; /* Ensure the overlay is behind other elements */
 }
 
-.hero-caption{
-    position: absolute;
-    width: 100%;
-    padding-left: 6%;
-    bottom: 0;
+.MoviePage img {
+  border-radius: 0.75rem;
 }
 
-.caption-img{
-    width: 90%;
-    max-width: 420px;
-    margin-bottom: 30px;
+.MoviePage .content {
+  position: relative;
+  z-index: 10; 
 }
 
-.hero-caption p{
-    max-width: 700px ;
-    font-size: 17px;
-    margin-bottom: 20px;
+.rating-modal {
+  z-index: 20; /* Ensure the rating modal is above all other elements */
 }
 
-.hero-buttons{
-    display: flex;
-    gap: 10px;
-    margin-bottom: 50px;
-}
-
-.hero-buttons .btn img{
-    width: 25px;
-}
-
-.hero-buttons .btn{
-    border: 0;
-    outline: 0;
-    padding: 8px 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    background: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.hero-buttons .btn.dark-btn{
-    color: #fff ;
-    background: #6d6d6eb3;
-}
-.hero-buttons .btn:hover{
-    background: #ffffffbf;
-}
-.hero-buttons .btn.dark-btn:hover{
-    background: #6d6d6e66;
-}

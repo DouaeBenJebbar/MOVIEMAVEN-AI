@@ -1,18 +1,24 @@
 import axios from "axios";
 
 const movieBaseUrl = "https://api.themoviedb.org/3";
-const api_key = '832899de30f8b1f1a8444e489ec1d9db';
+const api_key = "832899de30f8b1f1a8444e489ec1d9db";
 
+const movieByGenreBaseURL = `${movieBaseUrl}/discover/movie?api_key=${api_key}`;
 
-const movieByGenreBaseURL='https://api.themoviedb.org/3/discover/movie?api_key=2ec0d66f5bdf1dd12eefa0723f1479cf';
+const getTrendingVideos = axios.get(`${movieBaseUrl}/trending/all/day?api_key=${api_key}`);
 
-//https://api.themoviedb.org/3/trending/all/day?api_key=2ec0d66f5bdf1dd12eefa0723f1479cf
-const getTrendingVideos=axios.get(movieBaseUrl+
-    "/trending/all/day?api_key="+api_key);
-    const getMovieByGenreId=(id)=>
-    axios.get(movieByGenreBaseURL+"&with_genres="+id)
+const getMovieByGenreId = (id) =>
+  axios.get(`${movieByGenreBaseURL}&with_genres=${id}`);
 
-export default{
-    getTrendingVideos,
-    getMovieByGenreId
-}
+const getMovieDetails = (movieId) =>
+  axios.get(`${movieBaseUrl}/movie/${movieId}?api_key=${api_key}`);
+
+const searchMovies = (query) =>
+  axios.get(`${movieBaseUrl}/search/movie?api_key=${api_key}&query=${query}`);
+
+export default {
+  getTrendingVideos,
+  getMovieByGenreId,
+  getMovieDetails,
+  searchMovies,
+};

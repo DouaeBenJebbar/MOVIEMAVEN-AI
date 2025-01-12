@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { login, register } from "../../Services/authService";
+import Toast from "../../Components/Toast/Toast";
+import { useNavigate } from "react-router-dom";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -179,8 +182,48 @@ const Paragraph = styled.p`
   color: #e5e5e5;
 `;
 
+const ErrorMessage = styled.div`
+  background-color: #ff4d4d;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+`;
+
 const Login = () => {
-  const [signIn, toggle] = React.useState(true);
+  const [signIn, toggle] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [toast, setToast] = useState({ message: "", type: "", show: false });
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
+  const showToast = (message, type) => {
+    setToast({ message, type, show: true });
+  };
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      await login(email, password);
+      showToast("Login successful", "success");
+      navigate("/"); // Navigate to the homepage
+    } catch (error) {
+      showToast(`Login failed: ${error.message}`, "error");
+    }
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      await register(name, email, password);
+      showToast("Registration successful", "success");
+      toggle(true);
+    } catch (error) {
+      showToast(`Registration failed: ${error.message}`, "error");
+    }
+  };
 
   return (
     <>
@@ -188,21 +231,21 @@ const Login = () => {
       <LoginPageContainer>
         <Container>
           <SignUpContainer signinIn={signIn}>
-            <Form>
+            <Form onSubmit={handleSignUp}>
               <Title>Create Account</Title>
-              <Input type="text" placeholder="Name" />
-              <Input type="email" placeholder="Email" />
-              <Input type="password" placeholder="Password" />
-              <Button>Sign Up</Button>
+              <Input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+              <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <Button type="submit">Sign Up</Button>
             </Form>
           </SignUpContainer>
 
           <SignInContainer signinIn={signIn}>
-            <Form>
+            <Form onSubmit={handleSignIn}>
               <Title>Sign in</Title>
-              <Input type="email" placeholder="Email" />
-              <Input type="password" placeholder="Password" />
-              <Button>Sign In</Button>
+              <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <Button type="submit">Sign In</Button>
             </Form>
           </SignInContainer>
 
@@ -227,6 +270,12 @@ const Login = () => {
           </OverlayContainer>
         </Container>
       </LoginPageContainer>
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        show={toast.show}
+        onClose={() => setToast({ ...toast, show: false })}
+      />
     </>
   );
 };

@@ -28,7 +28,8 @@ function Slider() {
   };
 
   return (
-    <div className="pt-16"> {/* Add padding from the top */}
+    <div className="pt-20">
+      <h2 className="text-white text-lg md:text-xl mb-4 pl-20">Trending this week</h2>
       <HiChevronLeft
         className="hidden md:block text-white text-[30px] absolute
         mx-8 mt-[150px] cursor-pointer"

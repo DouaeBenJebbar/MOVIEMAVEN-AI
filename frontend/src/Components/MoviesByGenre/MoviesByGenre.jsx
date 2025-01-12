@@ -12,7 +12,7 @@ function MoviesByGenre() {
     return (
         <div className="p-5 md:px-16">
             {/* Add heading aligned to the left */}
-            <h2 className="text-white text-lg md:text-xl font-semibold mb-4">Search by Genre</h2>
+            <h2 className="text-white text-lg md:text-xl mb-4">Search by Genre</h2>
 
             <div className="flex gap-2 md:gap-5 p-2">
                 {genreList.map((genre) => (
@@ -23,7 +23,7 @@ function MoviesByGenre() {
                         flex items-center justify-center h-[50px] md:h-[60px] 
                         flex-[1_1_0%]"
                     >
-                        <p className="text-white font-medium text-sm md:text-base text-center">{genre.text}</p>
+                        <p className="text-white  text-sm md:text-base text-center">{genre.text}</p>
                     </div>
                 ))}
             </div>

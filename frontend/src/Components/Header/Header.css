@@ -7,7 +7,7 @@
     font-size: 14px;
     color: #e5e5e5;
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
-    z-index: 1;
+    z-index: 1000;
   }
   
   .header_left {
@@ -90,5 +90,19 @@
   
   .header_profile:hover .dropdown {
     display: block;
+  }
+  
+  .user_circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #e50914; /* Red background for the circle */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
   }
   
